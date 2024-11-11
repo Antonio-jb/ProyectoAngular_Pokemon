@@ -1,0 +1,8 @@
+<div *ngIf="pokemons.length > 0">
+  <div *ngFor="let pokemon of pokemons" class="pokemon">
+    <h1>{{ pokemon.nombre }}</h1>
+    <p>{{ pokemon.descripcion }}</p>
+   <img src="{{pokemon.image_url}}" alt="{{pokemon.nombre}}">
+
+  </div>
+</div>

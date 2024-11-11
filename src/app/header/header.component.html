@@ -1,1 +1,15 @@
-<h1>Texto de header.</h1>
+<header>
+  <div class="logo">
+    <span>logo aquí</span>
+  </div>
+  <nav *ngIf="toggleNav == true">
+    <a href="">Inicio</a>
+    <a href="">Contacto</a>
+
+    <button type="button" (click)="toggleStatusNav()">X</button>
+  </nav>
+
+  <div class="showNav">
+    <button type="button" (click)="toggleStatusNav()">Mostrar</button>
+  </div>
+</header>
