@@ -8,6 +8,7 @@ import { Pokemon } from "../services/interfaces/pokemon";
 })
 export class InformacionComponent {
 
+  // Array de objetos con la información de cada Pokémon para verlos en el HTML.
   pokemons: Pokemon[] = [
     {
       id: 1,

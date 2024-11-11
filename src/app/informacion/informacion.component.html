@@ -1,8 +1,13 @@
-<div *ngIf="pokemons.length > 0" class="contenedor_pokemon">
+<div *ngIf="pokemons.length > 0" class="contenedor-pokemon">
   <div *ngFor="let pokemon of pokemons" class="pokemon">
-    <h2>{{ pokemon.nombre }}</h2>
-    <p>{{ pokemon.descripcion }}</p>
-   <img src="{{pokemon.image_url}}" alt="{{pokemon.nombre}}">
+
+      <img src="{{ pokemon.image_url }}" alt="{{ pokemon.nombre }}">
+      <h2>{{ pokemon.nombre }}</h2>
+      <p>{{ pokemon.descripcion }}</p>
+
+      <button type="button">Ver Información.</button>
 
   </div>
 </div>
+
+<app-modal></app-modal>
