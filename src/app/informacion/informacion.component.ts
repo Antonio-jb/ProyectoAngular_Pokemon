@@ -1,12 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from "../services/interfaces/pokemon";
+import { InformacionService } from "../services/modales/informacion.service";
 
 @Component({
   selector: 'app-informacion',
   templateUrl: './informacion.component.html',
   styleUrl: './informacion.component.scss'
 })
-export class InformacionComponent {
+export class InformacionComponent implements OnInit {
+
+    mostrarModal: boolean = false;
+
+    constructor (
+        private informacionService: InformacionService
+        ) {
+
+        }
+
+    ngOnInit() {
+        // Obtiene la información de Pokémon cuando se inicia el componente.
+        this.informacionService.modal$.subscribe(modal => {
+            this.mostrarModal = modal;
+            });
+    }
+
+    toggleModal() {
+        this.informacionService.toggleModal(true);
+        }
 
   // Array de objetos con la información de cada Pokémon para verlos en el HTML.
   pokemons: Pokemon[] = [
