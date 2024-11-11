@@ -33,6 +33,7 @@ export class ModalComponent {
     }
 
   cerrarModal() {
+    this.enviarPokemonService.updatePokemon(null);
     this.informacionService.toggleModal(false);
 
     }

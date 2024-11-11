@@ -8,9 +8,9 @@
 
     <button type="button" class="button-close" (click)="cerrarModal()">X</button>
 
-    <h2>Nombre del Pokemon.</h2>
-    <img src="Victini.jpg" alt="">
-    <p>Descripción.</p>
+    <h2>{{pokemon?.nombre}}</h2>
+    <img src="{{pokemon?.image_url}}" alt="">
+    <p>{{pokemon?.descripcion}}</p>
 
   </div>
 
