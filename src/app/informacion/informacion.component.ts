@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from "../services/interfaces/pokemon";
+import { Pokemon, PokemonApi } from "../services/interfaces/pokemon";
 import { InformacionService } from "../services/modales/informacion.service";
-import { EnviarPokemonService } from "../services/pokemon/enviar-pokemon.service"
+import { EnviarPokemonService } from "../services/pokemon/enviar-pokemon.service";
+import { PokemonApiService } from '../services/pokemon/pokemon-api.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-informacion',
@@ -11,10 +14,13 @@ import { EnviarPokemonService } from "../services/pokemon/enviar-pokemon.service
 export class InformacionComponent implements OnInit {
 
     mostrarModal: boolean = false;
+    pokemonsApi: PokemonApi[] = [];
 
     constructor (
         private informacionService: InformacionService,
-        private enviarPokemonService: EnviarPokemonService
+        private enviarPokemonService: EnviarPokemonService,
+        private pokemonApiService: PokemonApiService,
+        private router: Router,
         ) {
 
         }
@@ -24,6 +30,29 @@ export class InformacionComponent implements OnInit {
         this.informacionService.modal$.subscribe(modal => {
             this.mostrarModal = modal;
             });
+
+          this.pokemonApiService.getAllPokemon().subscribe({
+
+              // Obligatorios: next, error.
+              // Opcional: complete.
+
+              next: data => { // Si la comunicación y la respuesta está OK.
+                  //console.log(data.results);
+                  this.pokemonsApi = data.results; // Guardamos la información en el array.
+                  console.log(this.pokemonsApi)
+                },
+
+              // Si hay error a la hora de comunicarnos con la api o con el servicio de in
+              error: error => {
+                  console.log("Error, no encontado.", error);
+                },
+
+              complete: () => { // Se ejecuta este bien o este mal.
+                  console.log('Obtención de Pokemons completada.');
+                }
+
+            })
+
     }
 
     toggleModal(pk: Pokemon) {
@@ -58,6 +87,16 @@ export class InformacionComponent implements OnInit {
       image_url: 'Mimikyu.jpg',
       },
   ]
+
+  detallesPokemon(nombre: string) {
+      // Deberemos de enviar el nombre
+      // a través de BehaviorSubject al component
+      // pokmeon-detail.
+
+      this.router.navigate(['detalles']);
+
+    }
+
 }
 
 
