@@ -1,6 +1,6 @@
 <div class="contenedor">
   <h1>{{pokemon?.name}}</h1>
-  <img style="width: 60%" src="{{pokemonDetalles?.sprites.front_default}}">
+  <img style="width: 60%" src="{{pokemonDetalles?.sprites.other['official-artwork'].front_default }}" alt="Imagen de {{pokemonDetalles?.name}}">
   <div>
     <p><span><u>Estadisticas Base:</u></span></p>
     <p><span>HP:</span> {{pokemonDetalles?.stats[0].base_stat + " - Puntos Base."}}</p>
