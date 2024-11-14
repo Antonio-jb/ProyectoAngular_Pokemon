@@ -1,0 +1,31 @@
+div.contenedor {
+
+  display: block;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  background-color: #F6DBC4;
+  border: solid 1px black;
+  border-radius: 30px;
+  margin: 30px 50px;
+  max-width: 400px;
+
+  h1 {
+
+    text-transform: uppercase;
+    color: #015454;
+
+  }
+
+  p {
+
+    font-size: 20px;
+
+    span {
+
+      font-weight: bold;
+      color: #015454;
+
+    }
+  }
+}
